@@ -1,0 +1,19 @@
+12/15/2022 /// everything is based on Henry's cylcle 11 react tutorial. I am not including the mui buttons
+
+Created a new react app and deleted unnecearry files. I want to start using Henry's folder hierarchy. Then combine the coding with
+    kevin tutorial(data base), then the other components that I have from the prisma project.
+
+Starting at Henry's index.js    
+    I installed react-router-dom: npm install react-router-dom.
+    imported the necessary imports
+    added the routes
+    create Home folder , .css, .jsx
+    created AboutYou folder, .css, .jsx
+    
+    Ok from here I have a Home page, AboutYou page and AnotherPage. In my index.js page I have to specify the route of the Page, then I 
+    can Link to them.
+    Im going to start writing the service.js and dbfiles for the database, I want to start with the Form, but, its on my work machine and I don't
+    feel like rumaging thru github for it
+
+service.js and db files from database project (coding with kevin)
+    create service.js file
