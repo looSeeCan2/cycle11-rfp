@@ -17,3 +17,5 @@ Starting at Henry's index.js
 
 service.js and db files from database project (coding with kevin)
     create service.js file
+    follow notes from full-stack2 (coding with kevin)
+    I'm having an issue with pushing the commit....Im using this as a test
