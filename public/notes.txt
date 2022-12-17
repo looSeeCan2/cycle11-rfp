@@ -31,6 +31,12 @@ service.js and db files from database project (coding with kevin)
     continuing with service.js
     I have express listening: npx nodemon service.js
     Im going to try adding the form first before I do the rest of the database operations
-    pages > form folder > .css > .jsx
-        first I created the ui in the reutrn 
-    create components folder > formInputs folder > .css > .jsx
+    create components folder > formInputs folder > .css, .jsx and created form folder > .css, .js
+        I mainly spent my time building the ui for the formInput and form. I created the input attributes in an array and picked apart
+        how the spread operator functioned when used inside the map to pass props to the formInput. Did some detectiive work on
+        destructuring. Made some the css that I had made sence. I still need to fully understand some of the css stuff that is going on 
+        with the form, like the "invalid" stuff. I only created 2 inputs for now, so I can clearly get an understanding of what is going
+        on. Next, I am now going to do useState and work on the onChange stuff and other functions.
+    
+    
+        
