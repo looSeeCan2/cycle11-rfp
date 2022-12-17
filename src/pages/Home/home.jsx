@@ -7,6 +7,9 @@ const Home = () => {
             <Link to="aboutYou">
                 <button>About You</button>
             </Link>
+            <Link to="form">
+                <button>Form</button>
+            </Link>
             <Link to="anotherPage">
                 <button>Another Page</button>
             </Link>

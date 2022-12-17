@@ -19,3 +19,18 @@ service.js and db files from database project (coding with kevin)
     create service.js file
     follow notes from full-stack2 (coding with kevin)
     I'm having an issue with pushing the commit....Im using this as a test
+    
+    /// this is the issue
+    remote: Permission to looSeeCan2/cycle11-rfp.git denied to looSeeCan.
+    fatal: unable to access 'https://github.com/looSeeCan2/cycle11-rfp.git/': The requested URL returned error: 403
+
+    I can commit, but, it gives me this issue when I try to push. Although I can do it on desktop just fine.
+    Also, on Full-stack2 everything works fine
+
+12/16/22
+    continuing with service.js
+    I have express listening: npx nodemon service.js
+    Im going to try adding the form first before I do the rest of the database operations
+    pages > form folder > .css > .jsx
+        first I created the ui in the reutrn 
+    create components folder > formInputs folder > .css > .jsx
