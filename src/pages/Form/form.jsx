@@ -6,14 +6,16 @@ import { Link } from "react-router-dom";
 
 const Form = () => {
     
-    // const [values, setValues] = useState({
-    //     fullname: "",
-    //     email: "",
-    //     birthDay:"",
-    //     password:"",
-    //     confirmPassword:"",
-    //     sso:"",
-    // })
+    const [values, setValues] = useState({
+        fullname: "",
+        email: "",
+        birthDay:"",
+        password:"",
+        confirmPassword:"",
+        sso:"",
+    });
+
+    console.log(values);
 
     const inputs = [
         {
