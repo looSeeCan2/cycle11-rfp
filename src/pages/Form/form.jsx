@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 
 const Form = () => {
     
-    const [values, setValues] = useState({
+    const [employee, setEmployee] = useState({
         fullname: "",
         email: "",
         birthDay:"",
         password:"",
         confirmPassword:"",
         sso:"",
-    });
+    })
 
-    console.log(values);
+    // console.log(values);
 
     const inputs = [
         {
@@ -41,11 +41,43 @@ const Form = () => {
         }
     ];
 
-    // console.log(...inputs)
+    const onChange = (e) => {
+        console.log(e);
+        // const {name, value} = e.target
+        setEmployee({...employee, [e.target.name]: e.target.value});
+        // console.log(values)
+        // if(name === "sso") { /// if the input that we are in === sso, 
+		// 	setEmployee(prevState => ({
+		// 		...prevState,
+		// 		[name]: parseInt(value)/// convert the value that is entered into a number
+		// 	}));
+		// 	return; /// return early
+		// }
+		// setEmployee(prevState => ({ /// if not basically just keep the value. 
+		// 	...prevState,
+		// 	[name]: value
+		// }));
+    }
 
+    const fetchData = async() => {
+        const getData = await fetch("/api", {
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json",
+                "Accept":"application/json"
+            },
+            body: JSON.stringify({
+                    sso: employee.sso,
+            })
+        })
+            .then(res => res.json())
+            console.log(getData[0]);
+    };
+                
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("handleSubmit")
+        
     }
 
     return (
@@ -59,11 +91,12 @@ const Form = () => {
                         {/* <FormInput {...inputs[0]} /> */}
                         {/* <FormInput {...inputs[1]} /> */}
                         {inputs.map(input => (
-                            <FormInput key={input.id} {...input} />
+                            <FormInput key={input.id} {...input} onChange={onChange} />
                             
                             ))}
                         <button className='formInputButton'>Submit</button>
                     </form>
+                    <button onClick={() => fetchData()}>Get Data</button>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import "../FormInput/formInput.css";
 
 const FormInput = (props) => {
 
-    console.log(props);
+    // console.log(props);
     /// the 
     const {label, errorMessage, onChange, id, ...inputProps } = props; /// destructuring
     
@@ -13,7 +13,7 @@ const FormInput = (props) => {
     return (
         <div className="formInput">
             <label>{label}</label>
-            <input className="input" {...inputProps}/>
+            <input className="input" {...inputProps} onChange={onChange}/>
             {/* <input className="input" name={props.name} placeholder={props.placeholder} pattern={props.pattern} required={props.required} type={props.type}  /> */}
 
             {/* <input 
