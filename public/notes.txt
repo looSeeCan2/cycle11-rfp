@@ -49,4 +49,8 @@ service.js and db files from database project (coding with kevin)
     The point of all this was to be able to merge and pull between my two accounts to simulate a real work experience. I couldn't do that 
     with this specific project because, I would of had to make a seperate table for each machine.
     I'm now going to share as a collaborator with my work account and coninue with this project.
-        
+    ........
+    befere I do the useState and onChange for the form.jsx. I'm gonna make sure I can do a querry for my info.
+    ok, I have to do the useState and the onChange first
+    got stuck trying to setup the click button to get the data. I forgot to add the proxy in package.json
+    Ok.... I got the data to pull. I do not think it is perfect, but, satisfactory for now 
