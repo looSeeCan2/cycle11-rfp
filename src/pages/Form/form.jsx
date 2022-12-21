@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import FormInput from '../../components/FormInput/formInput';
 import "./form.css";
 import { Link } from "react-router-dom";
-
+import { getDefaultNormalizer } from '@testing-library/react';
 
 const Form = () => {
-    
+    const [returnedData, setReturnedData] = useState("");
+
     const [employee, setEmployee] = useState({
         fullname: "",
         email: "",
@@ -38,25 +39,34 @@ const Form = () => {
             label: "Full Name",
             pattern: '^[A-za-z0-9 ]{3,16}$', 
             required: true,
+        },
+
+        {
+            id: 3,
+            name: "birthday",
+            type: "date",
+            placeholder: "D.O.B" ,
+            label: "BirthDay",
         }
     ];
 
     const onChange = (e) => {
-        console.log(e);
-        // const {name, value} = e.target
+        // console.log(e);
+        const {name, value} = e.target
         setEmployee({...employee, [e.target.name]: e.target.value});
-        // console.log(values)
-        // if(name === "sso") { /// if the input that we are in === sso, 
-		// 	setEmployee(prevState => ({
-		// 		...prevState,
-		// 		[name]: parseInt(value)/// convert the value that is entered into a number
-		// 	}));
-		// 	return; /// return early
-		// }
-		// setEmployee(prevState => ({ /// if not basically just keep the value. 
-		// 	...prevState,
-		// 	[name]: value
-		// }));
+        // console.log(employee)
+
+        if(name === "sso") { /// if the input that we are in === sso, 
+			setEmployee(prevState => ({
+				...prevState,
+				[name]: parseInt(value)/// convert the value that is entered into a number
+			}));
+			return; /// return early
+		}
+		setEmployee(prevState => ({ /// if not basically just keep the value. 
+			...prevState,
+			[name]: value
+		}));
     }
 
     const fetchData = async() => {
@@ -71,13 +81,36 @@ const Form = () => {
             })
         })
             .then(res => res.json())
-            console.log(getData[0]);
+            console.table(getData); /// the birth value is not formated
+
+            for(let key in getData) {/// I couldn't figure out how to format the birth in this object, so I had to edit it here. 
+                // console.log(key, getData[key].birth)
+                if(getData[key].birth) getData[key].birth = getData[key].birth.slice(0, 10)
+            }
+            console.table(getData)
     };
-                
-    const handleSubmit = (e) => {
+    
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("handleSubmit")
-        
+        console.log("handleSubmit");
+
+        console.log(employee);
+        const newData = await fetch("/create", {
+            method: "POST",
+            headers: {
+                "Content-Type":"application/json",
+                "Accept":"application/json"
+            },
+            body: JSON.stringify({
+                ...employee
+                // name: employee.fullname
+            })
+        })
+        .then(res => res.json())
+        // console.log(newData.fullname);
+        setReturnedData(newData);
+        console.table(returnedData);
+    
     }
 
     return (

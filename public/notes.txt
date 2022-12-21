@@ -54,3 +54,10 @@ service.js and db files from database project (coding with kevin)
     ok, I have to do the useState and the onChange first
     got stuck trying to setup the click button to get the data. I forgot to add the proxy in package.json
     Ok.... I got the data to pull. I do not think it is perfect, but, satisfactory for now 
+
+12/20/22
+    While working on the submit button. I ran into an issue with the dbOperation.js > register . The sql query's birthday field was giving an error. I 
+    am going to add the birthday input field to get pass this error.
+    So, I spent alot of time trying to format the date correctly, couldnt figure it out, so I just did a slice method to minus the chcara
+    cters that i dont need. That took a bit. I changed a few details in the dbOperations > register , 
+     Im gonna delete all the entrys from mssm that that I registered for testitng and call it a night.
