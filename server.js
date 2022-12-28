@@ -23,10 +23,10 @@ app.post("/api", async(req, res) => {
 app.post("/create", async(req, res) => {
     console.log("create");
     // console.log(req);
-    console.log(req.body);
+    // console.log(req.body);
     await dbOperation.register(req.body);/// the only difference is this operation that adds a new employee to the table
     const result = await dbOperation.getEmployees(req.body.sso);
-    console.log("result",result.recordset);
+    // console.log("result",result.recordset);
     res.send(result.recordset);
 })
 

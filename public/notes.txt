@@ -61,3 +61,14 @@ service.js and db files from database project (coding with kevin)
     So, I spent alot of time trying to format the date correctly, couldnt figure it out, so I just did a slice method to minus the chcara
     cters that i dont need. That took a bit. I changed a few details in the dbOperations > register , 
      Im gonna delete all the entrys from mssm that that I registered for testitng and call it a night.
+
+12/27/22
+    I was trying to send an alert if an sso number was already in the database, but, I could not get the alert message to pop up for some 
+    reason. I was first trying to do a comparison in dbOpertation > try, which I compared the sso number that was inputed on the form to all the sso numbers
+    in the db. I'm sure that worked, but the alert message did not show up in there. I then realized that I did not need that comparison
+    statement, because, the catch error would give me an errror for the exact thing I was trying to compare. So this is when
+    I tried to put it in the dbOperation > catch. Doesn't work. Tried to npm i alert. For some reason I can not install it in the 
+    dbOpertation.js. I think because this file is in the dbFiles and that is outside the src folder. because I can use an alert in the 
+    form > handlesubmit. That works fine. I will come back to this.
+    Working on the sign in form. I was trying to reuse the inputs and the useState values from the register form. Could not figure out 
+    how to do it. 

@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import FormInput from '../../components/FormInput/formInput';
 import "./form.css";
 import { Link } from "react-router-dom";
-import { getDefaultNormalizer } from '@testing-library/react';
 
-const Form = () => {
+export const employeeFunction = () => {
+    
+}
+
+export const Form = () => {
     const [returnedData, setReturnedData] = useState("");
 
     const [employee, setEmployee] = useState({
@@ -46,7 +49,42 @@ const Form = () => {
             name: "birthday",
             type: "date",
             placeholder: "D.O.B" ,
-            label: "BirthDay",
+            errorMessage: "Your D.O.B is required for authentication purposes.",
+            label: "D.O.B",
+            required: true,
+        },
+
+        {
+            id: 4,
+            name: "email",
+            type: "email",
+            placeholder: "Email",
+            // pattern: "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" ,
+            errorMessage: "Please Enter a valid Email address!",
+            label: "Email",
+            required: true,
+        },
+
+        {
+            id: 5,
+            name: "password" ,
+            type: "password",
+            placeholder: "Password",
+            errorMessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
+            label: "Password",
+            pattern: "^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+            required: true,
+        },
+
+        {
+            id: 6,
+			name: "confirmPassword",
+			type: "password",
+			placeholder: "Confirm Password",
+			errorMessage: "Passwords do not match",
+			label: "Confirm Password",
+			pattern: employee.password, /// we want the same password which is now stored in the values use state
+			required: true,
         }
     ];
 
@@ -81,15 +119,17 @@ const Form = () => {
             })
         })
             .then(res => res.json())
-            console.table(getData); /// the birth value is not formated
+            // console.table(getData); /// the birth value is not formated
 
             for(let key in getData) {/// I couldn't figure out how to format the birth in this object, so I had to edit it here. 
                 // console.log(key, getData[key].birth)
                 if(getData[key].birth) getData[key].birth = getData[key].birth.slice(0, 10)
+                
             }
             console.table(getData)
-    };
-    
+
+        };
+        
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("handleSubmit");
@@ -107,30 +147,31 @@ const Form = () => {
             })
         })
         .then(res => res.json())
+        console.log("newData:", newData);
         // console.log(newData.fullname);
         setReturnedData(newData);
-        console.table(returnedData);
+        console.table(returnedData); ///TODO: Idk why this is one step behind when it logs in the console. the last entry does not show up
+
+        ///TODO: 
+        // alert("test"); /// I could not get this to work in the dbOperation.js > catch. IDK why.
+
     
     }
 
     return (
         <div className='app'>
-            <div>
-                <div><Link to="/"><button>Back</button></Link></div>
-                <div className='imgcontainer'></div>
-                <div>
-                    <form className="form" onSubmit={handleSubmit}>
-                        <h1 className='register'>Register</h1>
-                        {/* <FormInput {...inputs[0]} /> */}
-                        {/* <FormInput {...inputs[1]} /> */}
-                        {inputs.map(input => (
-                            <FormInput key={input.id} {...input} onChange={onChange} />
-                            
-                            ))}
-                        <button className='formInputButton'>Submit</button>
-                    </form>
-                    <button onClick={() => fetchData()}>Get Data</button>
-                </div>
+            <div className='form'>
+            <div><Link to="/"><button>Back</button></Link></div>
+                <form className="" onSubmit={handleSubmit}>
+                    <div className='imgcontainer'></div>
+                    <h1 className='register'>Register</h1>
+                    {inputs.map(input => (
+                        <FormInput key={input.id} {...input} onChange={onChange} />
+                        
+                        ))}
+                    <button className='formInputButton'>Submit</button>
+                </form>
+                <button onClick={() => fetchData()}>Get Data</button>
             </div>
         </div>
     );

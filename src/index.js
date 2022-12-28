@@ -14,7 +14,7 @@ root.render(
       <Routes>
         <Route exact path='' element={<Home />} />
         <Route path='aboutYou' element={<AboutYou />} />
-        <Route path='form' element={<Form />} />
+        <Route path='register' element={<Form />} />
         <Route path='anotherPage' element={<AnotherPage />} />
       </Routes>
     </Router>

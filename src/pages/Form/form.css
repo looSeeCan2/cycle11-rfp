@@ -1,21 +1,19 @@
-
-
 .app{
-    border: 1px black solid;
-    border: 3px solid #f1f1f1;
-
-    /* display: flex; */
+    display: flex;
     align-items: center;
     justify-content: center; 
-    height: 100vh;
-    
-    background-size: cover;
-    background-position: center;
+}
 
+.form{
+    width: 508px; /* I had to put this here because the error messages were changing the size of the form
+    this width is the size of the longest error message*/
+    padding: 16px;
+    border: 1px black solid;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .imgcontainer {
-    /* width: 100px; */
     height: 100px;
     background-image: url("../../../public/images/ge.png");
     background-repeat: no-repeat;
@@ -26,15 +24,11 @@
 }
 
 
-
-.form{
-    align-items: center;
-    border: solid black 1px;
-    border-radius: 10px;
-    /* background-color: lightblue; */
-    padding: 0px 60px;
-    padding: 16px;
-
+input {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid grey;
 }
 
 .register{
@@ -43,19 +37,6 @@
 }
 
 .formInputButton{
-    /* width: 100%;
-    height: 50px;
-    padding: 10px;
-    border: none;
-    background-color: rebeccapurple;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 15px;
-    margin-bottom: 30px; */
-
     background-color: blue;
     color: white;
     padding: 14px 20px;

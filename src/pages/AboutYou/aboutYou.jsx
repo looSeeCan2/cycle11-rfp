@@ -7,7 +7,7 @@ const AboutYou = () => {
             <Link to="/"> 
                 <button>Back</button>
             </Link>
-            <h1>About You</h1>
+            <h1>About GE</h1>
         </div>
     );
 }
