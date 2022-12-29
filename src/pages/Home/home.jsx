@@ -1,19 +1,17 @@
 import React from 'react';
 import {Link} from "react-router-dom"
-import "./home.css";
+// import "./home.css";
+import "../Form/form.css";
 import FormInput from '../../components/FormInput/formInput';
 import Form from '../Form/form';
 import { useState } from 'react';
 
 const Home = () => {
-    
     const [employee, setEmployee] = useState({
         sso: "",
         email: "",
         password:"",
     });
-    
-    console.log(employee);
 
     const inputs = [
         {
@@ -29,7 +27,7 @@ const Home = () => {
         
 
         {
-            id: 4,
+            id: 2,
             name: "email",
             type: "email",
             placeholder: "Email",
@@ -40,7 +38,7 @@ const Home = () => {
         },
 
         {
-            id: 5,
+            id: 3,
             name: "password" ,
             type: "password",
             placeholder: "Password",
@@ -51,37 +49,66 @@ const Home = () => {
         },
 
     ];
-    console.log(inputs);
-    
+    // console.log(inputs);
 
-    
+    const onChange = (e) => {
+        // console.log(e)
+        setEmployee({...employee, [e.target.name]: e.target.value});
+
+    }
+    console.log(employee);
+
+    const handleSubmit = async(e) => {
+        console.log("handleSubmit")
+        e.preventDefault();
+        /// I need to compare the three values from the input/form to the values in the database, so I need to grab the database values
+        const getData = await fetch("/api", {
+            method: "GET" ,
+            headers: {
+                // "Content-Type":"application/json",
+                // "Accept":"application/json"
+            } ,
+            // body: JSON.stringify({
+            //     sso: employee.sso,
+            // })
+        })
+        .then(res => res.json())
+
+        for(let key in getData) {/// I couldn't figure out how to format the birth in this object, so I had to edit it here. 
+            // console.log(key, getData[key].birth)
+            if(getData[key].birth) getData[key].birth = getData[key].birth.slice(0, 10)
+            
+        }
+
+        console.table(getData);
+    }
+
     return (
+        <div className=''>
 
-        <div className='home'>
-            <div>
                 {/* <Link to="somethingElse">
                     <button>Something Else</button>
                 </Link> */}
                 <Link to="anotherPage">
-                    <button>Another Page</button>
+                    <button className=''>Another Page</button>
                 </Link>
                 <Link to="aboutYou">
-                    <button>About GE</button>
+                    <button className=''>About GE</button>
                 </Link>
-
-            </div>
+            
             <div>
-                <h1>Sign In To The Cubicle</h1>
+                <h1>The Cubicle</h1>
                 <h4>You need to <Link to= "register"><button>register</button></Link> before you can sign in.</h4>
             </div>
-            <div>
-                <form>
-
-                    {inputs.map((item) => (
-                        <FormInput />
+            
+            <div className='form' style={{}}>
+                <form className="" onSubmit={handleSubmit}>
+                    <div className='imgcontainer'></div>
+                    {inputs.map(input => (
+                        <FormInput key={input.id} {...input} onChange={onChange} />
+                        
                         ))}
-                    {/* <Form /> */}
-
+                    <button className='formInputButton'>Submit</button>
                 </form>
             </div>
         </div>

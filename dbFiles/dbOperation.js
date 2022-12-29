@@ -32,7 +32,8 @@ const register = async(employee) => { /// get the data from the database
         await pool.request().query(`INSERT INTO Employee (sso, fullname, email, birth, pwd)
             VALUES (${employee.sso}, '${employee.fullname}', '${employee.email}', '${employee.birthday}', '${employee.password}')
         `);
-        // return employees; /// I don't think I need this return /// const employess = await^
+        /// TODO: I may need to return this value if I want to send a confirmation or alert a confirmation
+        // return employees; /// I don't think I need this return /// const employee = await^
     }
     catch(error) {
         // alert(error);

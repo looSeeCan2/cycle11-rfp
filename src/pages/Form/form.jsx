@@ -8,7 +8,8 @@ export const employeeFunction = () => {
 }
 
 export const Form = () => {
-    const [returnedData, setReturnedData] = useState("");
+    const [returnedData, setReturnedData] = useState([]);
+    console.log(returnedData);
 
     const [employee, setEmployee] = useState({
         fullname: "",
@@ -107,29 +108,6 @@ export const Form = () => {
 		}));
     }
 
-    const fetchData = async() => {
-        const getData = await fetch("/api", {
-            method: "POST",
-            headers: {
-                "Content-Type":"application/json",
-                "Accept":"application/json"
-            },
-            body: JSON.stringify({
-                    sso: employee.sso,
-            })
-        })
-            .then(res => res.json())
-            // console.table(getData); /// the birth value is not formated
-
-            for(let key in getData) {/// I couldn't figure out how to format the birth in this object, so I had to edit it here. 
-                // console.log(key, getData[key].birth)
-                if(getData[key].birth) getData[key].birth = getData[key].birth.slice(0, 10)
-                
-            }
-            console.table(getData)
-
-        };
-        
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("handleSubmit");
@@ -171,7 +149,6 @@ export const Form = () => {
                         ))}
                     <button className='formInputButton'>Submit</button>
                 </form>
-                <button onClick={() => fetchData()}>Get Data</button>
             </div>
         </div>
     );

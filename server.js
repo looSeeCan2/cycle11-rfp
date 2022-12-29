@@ -11,11 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-app.post("/api", async(req, res) => {
+app.get("/api", async(req, res) => {
     console.log("called");
-    console.log(req.body);
-    const result = await dbOperation.getEmployees(req.body.sso);
-    console.log("result", result.recordset);
+    // console.log(req.body);
+    const result = await dbOperation.getEmployees();
+    // console.log("result", result.recordset);
     res.send(result.recordset)
 
 })
