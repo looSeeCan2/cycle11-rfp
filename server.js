@@ -11,22 +11,22 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-app.get("/api", async(req, res) => {
+app.post("/api", async(req, res) => {
     console.log("called");
     // console.log(req.body);
-    const result = await dbOperation.getEmployees();
+    const result = await dbOperation.getEmployees(req.body.sso);
     // console.log("result", result.recordset);
     res.send(result.recordset)
 
 })
 
-app.post("/create", async(req, res) => {
+app.post("/create", async(req, res) => {/// TODO: I don't think I need the dbOperation.getEmployess in here
     console.log("create");
     // console.log(req);
     // console.log(req.body);
     await dbOperation.register(req.body);/// the only difference is this operation that adds a new employee to the table
     const result = await dbOperation.getEmployees(req.body.sso);
-    // console.log("result",result.recordset);
+    console.log("result",result.recordset);
     res.send(result.recordset);
 })
 

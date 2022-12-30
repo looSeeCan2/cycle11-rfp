@@ -63,14 +63,14 @@ const Home = () => {
         e.preventDefault();
         /// I need to compare the three values from the input/form to the values in the database, so I need to grab the database values
         const getData = await fetch("/api", {
-            method: "GET" ,
+            method: "Post" ,
             headers: {
-                // "Content-Type":"application/json",
-                // "Accept":"application/json"
+                "Content-Type":"application/json",
+                "Accept":"application/json",
             } ,
-            // body: JSON.stringify({
-            //     sso: employee.sso,
-            // })
+            body: JSON.stringify({
+                sso: employee.sso,
+            })
         })
         .then(res => res.json())
 
@@ -79,7 +79,8 @@ const Home = () => {
             if(getData[key].birth) getData[key].birth = getData[key].birth.slice(0, 10)
             
         }
-
+        /// TODO: I have the values but I have to figure out if I want to do it this way or just do it in the server, where I just use
+            /// sql to query just one object. Im not sure if it is practical to grab the whole table?
         console.table(getData);
     }
 

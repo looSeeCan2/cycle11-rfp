@@ -3,18 +3,14 @@ import FormInput from '../../components/FormInput/formInput';
 import "./form.css";
 import { Link } from "react-router-dom";
 
-export const employeeFunction = () => {
-    
-}
-
 export const Form = () => {
-    const [returnedData, setReturnedData] = useState([]);
-    console.log(returnedData);
+const [returnedData, setReturnedData] = useState("");
+// console.log(returnedData);
 
-    const [employee, setEmployee] = useState({
+const [employee, setEmployee] = useState({
         fullname: "",
         email: "",
-        birthDay:"",
+        birthday:"",
         password:"",
         confirmPassword:"",
         sso:"",
@@ -132,7 +128,6 @@ export const Form = () => {
 
         ///TODO: 
         // alert("test"); /// I could not get this to work in the dbOperation.js > catch. IDK why.
-
     
     }
 
