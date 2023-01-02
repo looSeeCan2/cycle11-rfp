@@ -1,12 +1,15 @@
 import React from 'react';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 // import "./home.css";
 import "../Form/form.css";
 import FormInput from '../../components/FormInput/formInput';
 import Form from '../Form/form';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate();
+
     const [employee, setEmployee] = useState({
         sso: "",
         email: "",
@@ -79,9 +82,28 @@ const Home = () => {
             if(getData[key].birth) getData[key].birth = getData[key].birth.slice(0, 10)
             
         }
-        /// TODO: I have the values but I have to figure out if I want to do it this way or just do it in the server, where I just use
-            /// sql to query just one object. Im not sure if it is practical to grab the whole table?
-        console.table(getData);
+        console.log(getData);
+
+        if (getData.length !== 0) { /// if the sql query comes back with an object
+            console.log(true);
+            if(employee.sso === getData[0].sso.toString() && employee.email === getData[0].email && employee.password === getData[0].pwd) {
+                console.table(employee);
+                console.table(getData[0]);
+                console.log("authentication is good");
+                navigate("calendar");
+                // <Link to="anotherPage"></Link>
+            }else {
+                console.table(employee);
+                console.table(getData[0]);
+                alert("Your login credentials do not match our database");
+                
+            }
+        } else { /// the query comes back empty/undefined
+            console.table(employee);
+            console.table(getData[0]);
+            alert("Your login credentials do not match our database");
+        }
+    
     }
 
     return (
@@ -90,9 +112,9 @@ const Home = () => {
                 {/* <Link to="somethingElse">
                     <button>Something Else</button>
                 </Link> */}
-                <Link to="anotherPage">
-                    <button className=''>Another Page</button>
-                </Link>
+                {/* <Link to="">
+                    <button className=''></button>
+                </Link> */}
                 <Link to="aboutYou">
                     <button className=''>About GE</button>
                 </Link>
